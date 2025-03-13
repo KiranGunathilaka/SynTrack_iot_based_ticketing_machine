@@ -1,0 +1,6 @@
+../Core/Src/LCDController.c:57:6:lv_port_disp_init	1
+../Core/Src/LCDController.c:132:13:disp_init	1
+../Core/Src/LCDController.c:140:6:disp_enable_update	1
+../Core/Src/LCDController.c:146:6:disp_disable_update	1
+../Core/Src/LCDController.c:153:13:disp_flush	1
+../Core/Src/LCDController.c:168:6:HAL_SPI_TxCpltCallback	1

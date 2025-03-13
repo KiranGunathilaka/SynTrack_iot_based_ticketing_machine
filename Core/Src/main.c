@@ -21,8 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "ILI9341_STM32_Driver.h"
-#include "ILI9341_GFX.h"
+#include "lvgl.h"
+#include "LCDController.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,73 +93,28 @@ int main(void) {
 	MX_DMA_Init();
 	MX_SPI1_Init();
 	/* USER CODE BEGIN 2 */
-	ILI9341_Init();
+	lv_init();
+	lv_port_disp_init();
 
-	// Simple Text writing (Text, Font, X, Y, Color, BackColor)
-	// Available Fonts are FONT1, FONT2, FONT3 and FONT4
-	ILI9341_FillScreen(WHITE);
-	ILI9341_SetRotation(SCREEN_HORIZONTAL_2);
-	ILI9341_DrawText("HELLO WORLD", FONT4, 90, 110, BLACK, WHITE);
-	HAL_Delay(1000);
 
-	//Writing numbers
-	ILI9341_FillScreen(WHITE);
-	static char BufferText[30];
-	for (uint8_t i = 0; i <= 5; i++) {
-		sprintf(BufferText, "COUNT : %d", i);
-		ILI9341_DrawText(BufferText, FONT3, 10, 10, BLACK, WHITE);
-		ILI9341_DrawText(BufferText, FONT3, 10, 30, BLUE, WHITE);
-		ILI9341_DrawText(BufferText, FONT3, 10, 50, RED, WHITE);
-		ILI9341_DrawText(BufferText, FONT3, 10, 70, GREEN, WHITE);
-		ILI9341_DrawText(BufferText, FONT3, 10, 90, YELLOW, WHITE);
-		ILI9341_DrawText(BufferText, FONT3, 10, 110, PURPLE, WHITE);
-		ILI9341_DrawText(BufferText, FONT3, 10, 130, ORANGE, WHITE);
-		ILI9341_DrawText(BufferText, FONT3, 10, 150, MAROON, WHITE);
-		ILI9341_DrawText(BufferText, FONT3, 10, 170, WHITE, BLACK);
-		ILI9341_DrawText(BufferText, FONT3, 10, 190, BLUE, BLACK);
-	}
-
-	// Horizontal Line (X, Y, Length, Color)
-	ILI9341_FillScreen(WHITE);
-	ILI9341_DrawHLine(50, 120, 200, NAVY);
-	HAL_Delay(1000);
-
-	// Vertical Line (X, Y, Length, Color)
-	ILI9341_FillScreen(WHITE);
-	ILI9341_DrawVLine(160, 40, 150, DARKGREEN);
-	HAL_Delay(1000);
-
-	// Hollow Circle (Centre X, Centre Y, Radius, Color)
-	ILI9341_FillScreen(WHITE);
-	ILI9341_DrawHollowCircle(160, 120, 80, PINK);
-	HAL_Delay(1000);
-
-	// Filled Circle (Centre X, Centre Y, Radius, Color)
-	ILI9341_FillScreen(WHITE);
-	ILI9341_DrawFilledCircle(160, 120, 50, CYAN);
-	HAL_Delay(1000);
-
-	// Filled Rectangle (Start X, Start Y, Length X, Length Y)
-	ILI9341_FillScreen(WHITE);
-	ILI9341_DrawRectangle(50, 50, 220, 140, GREENYELLOW);
-	HAL_Delay(1000);
-
-	// Hollow Rectangle (Start X, Start Y, End X, End Y)
-	ILI9341_FillScreen(WHITE);
-	ILI9341_DrawHollowRectangleCoord(50, 50, 270, 190, DARKCYAN);
-	HAL_Delay(1000);
-
-	// Simple Pixel Only (X, Y, Color)
-	ILI9341_FillScreen(WHITE);
-	ILI9341_DrawPixel(100, 100, BLACK);
-	HAL_Delay(1000);
+//	lv_obj_set_style_bg_color(lv_scr_act(), lv_color_hex(0x003a57),
+//			LV_PART_MAIN);
+//	lv_obj_set_style_text_color(lv_scr_act(), lv_color_hex(0xffffff),
+//			LV_PART_MAIN);
+//
+//	/* Create a spinner */
+//	lv_obj_t *spinner = lv_spinner_create(lv_scr_act(), 1000, 60);
+//	lv_obj_set_size(spinner, 64, 64);
+//	lv_obj_align(spinner, LV_ALIGN_BOTTOM_MID, 0, 0);
+	lv_demo_benchmark();
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
 		/* USER CODE END WHILE */
-
+		lv_timer_handler();
+		HAL_Delay(5);
 		/* USER CODE BEGIN 3 */
 
 	}
@@ -188,7 +143,7 @@ void SystemClock_Config(void) {
 	RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
 	RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
 	RCC_OscInitStruct.PLL.PLLM = 8;
-	RCC_OscInitStruct.PLL.PLLN = 72;
+	RCC_OscInitStruct.PLL.PLLN = 80;
 	RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
 	RCC_OscInitStruct.PLL.PLLQ = 4;
 	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
@@ -231,7 +186,7 @@ static void MX_SPI1_Init(void) {
 	hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
 	hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
 	hspi1.Init.NSS = SPI_NSS_SOFT;
-	hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+	hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
 	hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
 	hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
 	hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
