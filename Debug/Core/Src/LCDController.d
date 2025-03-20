@@ -252,6 +252,7 @@ Core/Src/LCDController.o: ../Core/Src/LCDController.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Inc/ili9341.h ../Core/Inc/main.h
 ../Core/Inc/LCDController.h:
 C:/Users/META/STM32CubeIDE/workspace_1.16.0/Syntrack/Drivers/lvgl/lvgl.h:
@@ -507,5 +508,6 @@ C:/Users/META/STM32CubeIDE/workspace_1.16.0/Syntrack/Drivers/lvgl/src/extra/widg
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 ../Core/Inc/ili9341.h:
 ../Core/Inc/main.h:
