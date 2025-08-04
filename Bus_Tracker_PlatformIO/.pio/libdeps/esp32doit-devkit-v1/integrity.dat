@@ -1,0 +1,4 @@
+lvgl/lvgl@8.3.11
+bodmer/TFT_eSPI@^2.5.43
+mobizt/Firebase Arduino Client Library for ESP8266 and ESP32@^4.4.17
+adafruit/Adafruit Thermal Printer Library@^1.4.1
