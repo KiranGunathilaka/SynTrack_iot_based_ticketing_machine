@@ -43,8 +43,6 @@
 #define WIFI_PASSWORD "DiscreteFourierTransform"
 
 // Firebase settings
-#define FIREBASE_API_KEY "AIzaSyAq2WTJzbLY3nO_cjqc54rK3BNsouW8Ypk"
-#define FIREBASE_DATABASE_URL "https://syntrack-52802-default-rtdb.firebaseio.com"
 
 const unsigned long FIREBASE_INTERVAL = 10000; // milliseconds
 
